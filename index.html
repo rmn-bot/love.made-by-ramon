@@ -10,6 +10,51 @@
   padding: 0;
   box-sizing: border-box;
 }
+  body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+.animated-button {
+  background-color: #6200ea;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.blinking-text {
+  font-size: 30px;
+  font-weight: bold;
+  animation: blink 1s infinite alternate;
+  text-shadow: 0 0 10px #f39c12, 0 0 20px #e74c3c;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 html,
 body {
   background: black;
@@ -473,10 +518,13 @@ canvas {
 </style></head>
 <body>
     
-<audio controls autoplay loop>
-  <source src="love.mp3" type="audio/mp3">
-</audio>
+  <div class="container">
+    <button id="lihatButton" class="animated-button">play</button>
+    <p class="blinking-text">klik "diatas!"</p>
+  </div>
 
+  <audio id="bgMusic" src="love.mp3"></audio>
+  
   <div class="bubbles">
     <div class="bubble"><svg class="heart" viewbox="0 0 32 32">
         <title>heart22</title>
@@ -590,6 +638,11 @@ canvas {
 </div></div><script type="text/javascript" id="dcoder_script">
 "use strict";
 
+document.getElementById('lihatButton').addEventListener('click', function() {
+  var music = document.getElementById('bgMusic');
+  music.play();
+});
+  
 !(function () {
   function t() {
     !(function () {
